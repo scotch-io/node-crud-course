@@ -5,16 +5,20 @@ const express = require('express'),
 // export the router ======================
 module.exports = router;
 
+router.get('/', showHome);
+router.get('/seed', seedEvents);
+router.get('/events/:slug', showEvent);
+
 // configure routes =======================
 // home page (show all events)
-router.get('/', (req, res) => {
+function showHome(req, res) {
   Event.find({}, (err, events) => {
     res.render('pages/index', { events: events });
   });
-});
+}
 
 // seed the databse
-router.get('/seed', (req, res) => {
+function seedEvents(req, res) {
   // create some events
   const events = [
     { name: 'Basketball', slug: 'basketball', description: 'Throwing into a basket.' },
@@ -28,10 +32,10 @@ router.get('/seed', (req, res) => {
     Event.insertMany(events);
   });
   res.send('Seeded!');
-});
+}
 
 // show a single event
-router.get('/events/:slug', (req, res) => {
+function showEvent(req, res) {
   Event.findOne({ slug: req.params.slug }, (err, event) => {
     if ( ! event) {
       res.status(404);
@@ -40,4 +44,4 @@ router.get('/events/:slug', (req, res) => {
 
     res.render('pages/single', { event: event });
   });
-});
+}
