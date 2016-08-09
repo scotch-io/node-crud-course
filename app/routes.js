@@ -26,21 +26,26 @@ function showHome(req, res) {
 function seedEvents(req, res) {
   // create some events
   const events = [
-    { name: 'Basketball', slug: 'basketball', description: 'Throwing into a basket.' },
-    { name: 'Swimming', slug: 'swimming', description: 'Very fast fish.' },
-    { name: 'Weightlifting', slug: 'weightlifting', description: 'Heavy things go up.' }
+    { name: 'Basketball', description: 'Throwing into a basket.' },
+    { name: 'Swimming', description: 'Very fast fish.' },
+    { name: 'Weightlifting', description: 'Heavy things go up.' }
   ];
 
   // use the mongoose model. 
   // delete all. insert new
   Event.remove({}, () => {
-    Event.insertMany(events);
+    for (event of events) {
+      var newEvent = new Event(event);
+      newEvent.save();
+    }
   });
   res.send('Seeded!');
 }
 
 // show the create form
 function showCreate(req, res) {
+  // const message = req.flash('message');
+  // res.render('pages/create', { message: message });
   res.render('pages/create');
 }
 

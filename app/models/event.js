@@ -11,8 +11,10 @@ const eventSchema = new Schema({
   description: String
 });
 
-eventSchema.pre('save', (next) => {
-  console.log('what');
+// make sure that the slug is created
+eventSchema.pre('save', function(next) {
+  this.slug = slugify(this.name);
+  next();
 });
 
 // define the model
