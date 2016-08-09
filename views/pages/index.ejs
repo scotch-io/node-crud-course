@@ -1,5 +1,6 @@
 <div class="jumbotron text-center">
     <h1>All Events</h1>
+    <a href="/create" class="btn btn-lg btn-danger">Create</a>
 </div>
 
 <table class="table table-bordered table-hover">
@@ -16,8 +17,8 @@
             <td><%= event.name %></td>
             <td class="col-sm-2 text-center">
                 <!-- links to view, edit, delete -->
-                <a href="#" class="btn btn-sm btn-primary">View</a>
-                <a href="#" class="btn btn-sm btn-primary">Edit</a>
+                <a href="/events/<%= event.slug %>" class="btn btn-sm btn-primary">View</a>
+                <a href="/events/<%= event.slug %>/edit" class="btn btn-sm btn-primary">Edit</a>
                 <a href="#" class="btn btn-sm btn-primary">Delete</a>
             </td>
         </tr>

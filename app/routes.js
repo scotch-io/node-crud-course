@@ -5,9 +5,14 @@ const express = require('express'),
 // export the router ======================
 module.exports = router;
 
-router.get('/', showHome);
-router.get('/seed', seedEvents);
-router.get('/events/:slug', showEvent);
+router.get('/',                   showHome);
+router.get('/seed',               seedEvents);
+router.get('/create',             showCreate);
+router.post('/create',            processCreate);
+router.get('/events/:slug',       showEvent);
+router.get('/events/:slug/edit',  editEvent);
+router.post('/events/:slug/edit', processEdit);
+router.delete('/events/:id',      deleteEvent);
 
 // configure routes =======================
 // home page (show all events)
@@ -34,6 +39,30 @@ function seedEvents(req, res) {
   res.send('Seeded!');
 }
 
+// show the create form
+function showCreate(req, res) {
+  res.render('pages/create');
+}
+
+// handle the creation form
+function processCreate(req, res) {
+  // create the new event
+  const event = new Event({
+    name: req.body.name,
+    slug: 'something',
+    description: req.body.description
+  });
+
+  // persist the new event
+  event.save((err) => {
+    if (err)
+      throw err;
+
+    // return a redirect to the single page
+    res.redirect(`/events/${event.slug}`);
+  });
+}
+
 // show a single event
 function showEvent(req, res) {
   Event.findOne({ slug: req.params.slug }, (err, event) => {
@@ -45,3 +74,33 @@ function showEvent(req, res) {
     res.render('pages/single', { event: event });
   });
 }
+
+// show the form to edit an event
+function editEvent(req, res) {
+  // find the event
+  // send the edit page
+  Event.findOne({ slug: req.params.slug }, (err, event) => {
+    if ( ! event) {
+      res.status(404);
+      res.render('pages/404'); 
+    }
+
+    res.render('pages/edit', { event: event });
+  });
+}
+
+// process the edit form
+function processEdit(req, res) {
+
+}
+
+// delete an event
+function deleteEvent(req, res) {
+  // delete the event by id
+  Event.findOne({ _id: req.params.id }, (err, event) => {
+
+  });
+
+  // return a redirect
+}
+

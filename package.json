@@ -23,6 +23,7 @@
     "ejs": "^2.5.1",
     "express": "^4.14.0",
     "express-ejs-layouts": "^2.2.0",
+    "express-validator": "^2.20.8",
     "mongodb": "^2.2.5",
     "mongoose": "^4.5.8",
     "morgan": "^1.7.0"
