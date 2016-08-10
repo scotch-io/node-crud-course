@@ -6,15 +6,9 @@ const express    = require('express'),
   morgan         = require('morgan'),
   bodyParser     = require('body-parser'),
   expressLayouts = require('express-ejs-layouts'),
-  mongoose       = require('mongoose'),
-  flash          = require('connect-flash'),
-  session        = require('express-session');
+  mongoose       = require('mongoose');
 
 // configure our app ================
-// use a session and use flash messages
-// app.use(session({ secret: 'blahblahblah' }));   
-// app.use(flash());
-
 // grab info from forms
 app.use(bodyParser.urlencoded({ extended: true }));
 
