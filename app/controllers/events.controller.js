@@ -1,7 +1,7 @@
 const Event = require('../models/event');
 
 module.exports = {
-  showHome: showHome,
+  showAll: showAll,
   seedEvents: seedEvents,
   showCreate: showCreate,
   processCreate: processCreate,
@@ -13,9 +13,9 @@ module.exports = {
 
 // configure routes =======================
 // home page (show all events)
-function showHome(req, res) {
+function showAll(req, res) {
   Event.find({}, (err, events) => {
-    res.render('pages/index', { events: events });
+    res.render('pages/events', { events: events });
   });
 }
 
