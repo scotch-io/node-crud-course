@@ -2,6 +2,10 @@
     <h1>All Events</h1>
 </div>
 
+<% if (success.length > 0) { %>
+    <div class="alert alert-success"><%= success %></div>
+<% } %>
+
 <table class="table table-bordered table-hover table-striped">
     <thead>
         <tr>
@@ -18,6 +22,7 @@
                 <td><%= event.description %></td>
                 <td>
                     <a href="/events/<%= event.slug %>" class="btn btn-sm btn-primary">View</a>
+                    <a href="/events/<%= event.slug %>/edit" class="btn btn-sm btn-primary">Edit</a>
                 </td>
             </tr>
         <% } %>
