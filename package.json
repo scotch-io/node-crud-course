@@ -17,6 +17,7 @@
   },
   "homepage": "https://github.com/scotch-io/node-crud-course#readme",
   "dependencies": {
+    "body-parser": "^1.15.2",
     "dotenv": "^2.0.0",
     "ejs": "^2.5.1",
     "express": "^4.14.0",

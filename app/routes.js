@@ -1,7 +1,7 @@
 // create a new express router
-const express = require('express'),
-  router = express.Router(),
-  mainController = require('./controllers/main.controller'),
+const express      = require('express'),
+  router           = express.Router(),
+  mainController   = require('./controllers/main.controller'),
   eventsController = require('./controllers/events.controller');
 
 // export router
@@ -18,6 +18,9 @@ router.get('/events',       eventsController.showEvents);
 router.get('/events/seed',  eventsController.seedEvents);
 
 // create events
+router.get('/events/create', eventsController.showCreate);
+router.post('/events/create', eventsController.processCreate);
+
 // edit events
 // delete events
 
