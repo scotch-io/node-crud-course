@@ -116,11 +116,10 @@ function processEdit(req, res) {
 
 // delete an event
 function deleteEvent(req, res) {
-  // delete the event by id
-  Event.findOne({ _id: req.params.id }, (err, event) => {
-
+  // delete the event by slug
+  Event.remove({ slug: req.params.slug }, (err) => {
+    // return a redirect
+    res.redirect('/events');
   });
-
-  // return a redirect
 }
 
