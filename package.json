@@ -18,10 +18,14 @@
   "homepage": "https://github.com/scotch-io/node-crud-course#readme",
   "dependencies": {
     "body-parser": "^1.15.2",
+    "connect-flash": "^0.1.1",
+    "cookie-parser": "^1.4.3",
     "dotenv": "^2.0.0",
     "ejs": "^2.5.1",
     "express": "^4.14.0",
     "express-ejs-layouts": "^2.2.0",
+    "express-session": "^1.14.0",
+    "express-validator": "^2.20.8",
     "mongoose": "^4.5.8"
   }
 }
