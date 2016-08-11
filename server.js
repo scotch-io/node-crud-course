@@ -6,9 +6,7 @@ const express = require('express'),
 // configure our application
 
 // set the routes
-app.get('/', (req, res) => {
-  res.send('Hello, I am the app!');
-});
+app.use(require('./app/routes'));
 
 // start our server
 app.listen(port, () => {
