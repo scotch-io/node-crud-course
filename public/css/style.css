@@ -1,0 +1,27 @@
+body  {
+  font-size: 16px;
+  line-height: 1.5;
+}
+
+/* header */
+#site-header .navbar  {
+  border-radius: 0;
+  border: none;
+  margin: 0;
+}
+
+/* main section */
+#site-main  {
+  padding-bottom: 50px;
+  padding-top: 50px;
+}
+
+/* footer */
+#site-footer  {
+  text-align: center;
+  padding-bottom: 30px;
+  padding-top: 30px;
+  font-size: 12px;
+  background: #222;
+  color: #999;
+}
